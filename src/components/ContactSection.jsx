@@ -1,33 +1,66 @@
 import {
+  CheckCircle,
   Github,
   Instagram,
   Linkedin,
   Mail,
   MapPin,
   Phone,
-  Send
+  Send,
+  XCircle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState(null); // "success" | "error" | null
+  const formRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
+    setFormStatus(null);
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    const form = formRef.current;
+    const templateParams = {
+      from_name: form.from_name.value,
+      from_email: form.from_email.value,
+      message: form.message.value,
+    };
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      )
+      .then(() => {
+        setFormStatus("success");
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error);
+        setFormStatus("error");
+        toast({
+          title: "Something went wrong.",
+          description: "Your message couldn't be sent. Please try again later.",
+          variant: "destructive",
+        });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-      setIsSubmitting(false);
-    }, 1500);
   };
+
   return (
     <section id="contact" className="py-13 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -105,16 +138,31 @@ export const ContactSection = () => {
             </div>
           </div>
 
-          <div
-            className="bg-card p-8 rounded-md shadow-xs pt-3"
-            onSubmit={handleSubmit}
-          >
+          <div className="bg-card p-8 rounded-md shadow-xs pt-3">
             <h3 className="text-xl font-semibold mb-6"> Send a Message</h3>
 
-            <form className="space-y-2">
+            {/* Status Banner */}
+            {formStatus === "success" && (
+              <div className="flex items-center gap-3 px-4 py-3 mb-4 rounded-md bg-green-500/10 border border-green-500/30 text-green-600 dark:text-green-400 text-sm duration-500">
+                <CheckCircle className="h-5 w-5 shrink-0" />
+                <span>
+                  Your message was sent successfully! I'll get back to you soon.
+                </span>
+              </div>
+            )}
+            {formStatus === "error" && (
+              <div className="flex items-center gap-3 px-4 py-3 mb-4 rounded-md bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-sm">
+                <XCircle className="h-5 w-5 shrink-0" />
+                <span>
+                  Oops! Something went wrong. Please try again or email me directly.
+                </span>
+              </div>
+            )}
+
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-2">
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="from_name"
                   className="block text-sm font-medium mb-2"
                 >
                   {" "}
@@ -122,17 +170,17 @@ export const ContactSection = () => {
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
+                  id="from_name"
+                  name="from_name"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="John Doe..."
                 />
               </div>
 
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="from_email"
                   className="block text-sm font-medium mb-2"
                 >
                   {" "}
@@ -140,10 +188,10 @@ export const ContactSection = () => {
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
+                  id="from_email"
+                  name="from_email"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                   placeholder="john@gmail.com"
                 />
               </div>
@@ -160,7 +208,7 @@ export const ContactSection = () => {
                   id="message"
                   name="message"
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden foucs:ring-2 focus:ring-primary resize-none"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none"
                   placeholder="Hello, I'd like to talk about..."
                 />
               </div>
