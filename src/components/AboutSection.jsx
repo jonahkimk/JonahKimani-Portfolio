@@ -1,6 +1,5 @@
 import { Code,User,Briefcase } from "lucide-react";
 
-
 export const AboutSection =() => {
     return (<section id="about" className="relative py-15 px-4">
         {" "}
@@ -23,8 +22,8 @@ export const AboutSection =() => {
                         and always a willing learner.  
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-                        <a href = "#contact" className="cosmic-button"> Get In Touch</a>
-                        <a href = "#" className="px-6 py-2 rounded-full border-primary text-primary hover:bg-primary/20 transition-colors duration-300 "> Download Resume</a>
+                        <a href="#contact" className="cosmic-button"> Get In Touch</a>
+                        <a href="/Jonah Kimani Resume.pdf" download="Jonah_Kimani_Resume.pdf" className="px-6 py-2 rounded-full border-primary text-primary hover:bg-primary/20 transition-colors duration-300 "> Download Resume</a>
                     </div>
 
                 </div> 

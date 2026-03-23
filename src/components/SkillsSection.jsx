@@ -7,25 +7,25 @@ const skills=[
     {name: "HTML/CSS", level: "70", category: "Frontend"},
     {name: "JavaScript", level: "50", category: "Frontend"},
     {name: "React", level: "50", category: "Frontend"},
-    {name: "Next.js", level: "30", category: "Frontend"},
     {name: "Tailwind CSS", level: "30", category: "Frontend"},
     {name: "PHP", level: "70", category: "Frontend"},
 
     //Backend
     {name: "Node.js", level: "40", category: "Backend"},
     {name: "Python", level: "50", category: "Backend"},
-    {name: "Django", level: "40", category: "Backend"},
+    /* {name: "Django", level: "40", category: "Backend"}, */
     {name: "Java", level: "70", category: "Backend"},
     {name: "C++", level: "70", category: "Backend"},
 
     //Database and Tools
     {name: "Git/GitHub", level: "40", category: "Tools and Database"},
-    {name: "Docker", level: "40", category: "Tools and Database"},
+    /* {name: "Docker", level: "40", category: "Tools and Database"}, */
     {name: "SQL", level: "90", category: "Tools and Database"},
     {name: "MongoDB", level: "30", category: "Tools and Database"},
     {name: "PostgreSQL", level: "30", category: "Tools and Database"},
     {name :"VsCode", level: "90", category: "Tools and Database"},
-    
+    {name :"Cursor", level: "90", category: "Tools and Database"},
+
 ];
 
 const categories = ["all", "Frontend", "Backend", "Tools and Database"];

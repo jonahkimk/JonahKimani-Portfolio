@@ -10,26 +10,44 @@ const projects = [
         /* image:'public/vite.svg',  */
         tags: ["Java", "MySQL"],
         demoURL: "#",
-        githubURL: "#"
+        //githubUrl: "#"
 
+    },
+    {
+        id: 2,
+        title: "Property Rental Management System",
+        description: "A property rental management system which allows property owners to manage their rental listings, landlords to manage manager properties and tenants to view their invoices, make payments and allow for conversations with the landlord.",  
+        image:'public/rentalmspic.png', 
+        tags: ["React", "Tailwind CSS", "PostgreSQL"],
+        demoURL: "https://rms-frontend-uo3t.onrender.com/",
+        //githubUrl: "#"
+    },
+    {
+        id: 3,
+        title: "Airline Reservation System",
+        description: "An airline reservation system which allows passengers to search for flights, book seats, and manage their reservations.",  
+        /* image:'public/airlinemspic.png',  */
+        tags: ["HTML/CSS", "PHP", "MySQL"],
+        demoURL: "#",
+        //githubUrl: "#"
     }
 ]
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-10 px-4 relative">
+    <section id="projects" className="py-9 px-4 relative">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
           {" "}
           Featured <span className="text-primary"> Projects </span>
         </h2>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
           Here are some of my recent projects. Each project was carefully
           crafted with attention to detail, performance, and user experience.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((project, key) => (
             <div
               key={key}
@@ -52,14 +70,16 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-1"> {project.title}</h3>
+                <a href={project.demoURL} target="_blank" rel="noopener noreferrer">
+                  <h3 className="text-xl font-semibold mb-1 hover:text-primary transition-colors duration-300 cursor-pointer"> {project.title}</h3>
+                </a>
                 <p className="text-muted-foreground text-sm mb-4">
                   {project.description}
                 </p>
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-3">
+                {/* <div className="flex justify-between items-center">
+                  <div className="flex space-x-2">
                     <a
-                      href={project.demoUrl}
+                      href={project.demoURL}
                       target="_blank"
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
@@ -71,9 +91,9 @@ export const ProjectsSection = () => {
                       className="text-foreground/80 hover:text-primary transition-colors duration-300"
                     >
                       <Github size={20} />
-                    </a>
+                    </a> 
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
