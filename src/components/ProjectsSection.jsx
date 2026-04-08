@@ -7,7 +7,7 @@ const projects = [
         id: 1,
         title: "EliBooks Library Management System",
         description: "A Library Management System built with Java and MySQL. It allows librarians to manage the book inventory and track borrowing and returning history.",
-        /* image:'public/vite.svg',  */
+        image:'/elibookspic.png', 
         tags: ["Java", "MySQL"],
         demoURL: "#",
         //githubUrl: "#"
@@ -17,7 +17,7 @@ const projects = [
         id: 2,
         title: "Property Rental Management System",
         description: "A property rental management system which allows property owners to manage their rental listings, landlords to manage manager properties and tenants to view their invoices, make payments and allow for conversations with the landlord.",  
-        image:'public/rentalmspic.png', 
+        image:'/rentalmspic.png', 
         tags: ["React", "Tailwind CSS", "PostgreSQL"],
         demoURL: "https://rms-frontend-uo3t.onrender.com/",
         //githubUrl: "#"
