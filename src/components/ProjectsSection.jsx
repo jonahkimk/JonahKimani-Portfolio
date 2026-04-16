@@ -18,8 +18,9 @@ const projects = [
         title: "Property Rental Management System",
         description: "A property rental management system which allows property owners to manage their rental listings, landlords to manage manager properties and tenants to view their invoices, make payments and allow for conversations with the landlord.",  
         image:'/rentalmspic.png', 
-        tags: ["React", "Tailwind CSS", "PostgreSQL"],
-        demoURL: "https://rms-frontend-uo3t.onrender.com/",
+        tags: ["React", "Tailwind CSS", "PostgreSQL","Node.js"],
+        /* demoURL: "https://rms-frontend-uo3t.onrender.com/", */
+        demoURL: "#",
         //githubUrl: "#"
     },
     {
