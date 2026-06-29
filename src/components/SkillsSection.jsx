@@ -10,10 +10,16 @@ const skills=[
     {name: "Tailwind CSS", level: "30", category: "Frontend"},
     {name: "PHP", level: "70", category: "Frontend"},
 
+    //Mobile Programming
+    {name: "React Native", level: "40", category: "Mobile Programming"},
+    {name: "Flutter", level: "30", category: "Mobile Programming"},
+    {name: "Dart", level: "30", category: "Mobile Programming"},
+
     //Backend
     {name: "Node.js", level: "40", category: "Backend"},
     {name: "Python", level: "50", category: "Backend"},
-    /* {name: "Django", level: "40", category: "Backend"}, */
+    /* {name: "Django", level: "40", category: "Backend"},
+      {name: "Laravel", level: "30", category: "Backend"}, */
     {name: "Java", level: "70", category: "Backend"},
     {name: "C++", level: "70", category: "Backend"},
 
@@ -28,7 +34,7 @@ const skills=[
 
 ];
 
-const categories = ["all", "Frontend", "Backend", "Tools and Database"];
+const categories = ["all", "Frontend", "Backend", "Tools and Database", "Mobile Programming"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -37,13 +43,13 @@ export const SkillsSection = () => {
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
   return (
-    <section id="skills" className="py-6 px-4 relative bg-secondary/30">
+    <section id="skills" className="py-5 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-2xl md:text-4xl font-bold mb-12 text-center">
           My <span className="text-primary"> Skills</span>
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-4 mb-6">
           {categories.map((category, key) => (
             <button
               key={key}

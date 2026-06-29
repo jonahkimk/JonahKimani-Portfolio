@@ -1,7 +1,7 @@
 import { Code,User,Briefcase } from "lucide-react";
 
 export const AboutSection =() => {
-    return (<section id="about" className="relative py-15 px-4">
+    return (<section id="about" className="relative py-8 px-4">
         {" "}
         <div className="container max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
